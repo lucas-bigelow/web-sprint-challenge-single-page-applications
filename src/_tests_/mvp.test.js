@@ -33,6 +33,8 @@ describe("Pizza test, sprint 3 challenge", () => {
     const orderPizza = document.querySelector('#order-pizza')
     expect(orderPizza).toBeInTheDocument();
     fireEvent.click(orderPizza)
+    // MY CODE TAKE OUT
+    console.log(history.location.pathname, history);
     expect(history.location.pathname).toBe('/pizza')
   });
 

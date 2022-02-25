@@ -1,19 +1,22 @@
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function Home() {
   const history = useHistory();
 
   // handle go to order page
   const handleOrder = evt => {
-    console.log('working');
+    evt.preventDefault();
+    history.push('/pizza');
+    console.log(history.location.pathname);
+    return('/pizza');
   }
+
+  console.log(history.location);
 
   return (
     <div className='home'>
       <h1>Jimothy's Pizza</h1>
-      <Link to='/pizza' id='order-pizza'>
-        Order Pizza
-      </Link>
+      <button onClick={handleOrder} id='order-pizza'>Order Pizza</button>
     </div>
   )
 }

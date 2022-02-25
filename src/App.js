@@ -13,7 +13,7 @@ const App = () => {
           component={Home}
         />
         <Route 
-          exact path='/pizza'
+          path='/pizza'
           component={OrderForm}
         />
       </Router>
