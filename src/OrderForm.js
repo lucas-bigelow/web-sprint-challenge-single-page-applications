@@ -47,7 +47,6 @@ function OrderForm() {
       validate(name, newVal);
     }
     setFormValues({...formValues, [name]: newVal});
-    console.log(formValues);
   }
 
   // 'submit' event handler
