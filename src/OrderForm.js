@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 
-import Order from '../Order/Order';
-import formSchema from '../../validation';
+import Order from './Order';
+import formSchema from './validation';
 import './OrderForm.css';
 import axios from 'axios';
 
