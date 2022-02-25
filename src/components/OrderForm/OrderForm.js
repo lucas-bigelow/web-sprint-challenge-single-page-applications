@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
 
+import Order from '../Order/Order';
 import formSchema from '../../validation';
 import './OrderForm.css';
+import axios from 'axios';
 
 const initialFormValues = {
   name: '',
@@ -18,6 +20,7 @@ const initialFormValues = {
 function OrderForm() {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errorMessage, setErrorMessage] = useState('');
+  const [inProgressOrder, setInProgressOrder] =useState(null);
 
   const history = useHistory();
 
@@ -48,11 +51,18 @@ function OrderForm() {
   }
 
   // 'submit' event handler
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    axios.post('https://reqres.in/api/orders', formValues)
+      .then(resp => resp.data)
+      .then(resp => setInProgressOrder(resp))
+      .catch(err => console.error(err));
+  }
 
   return(
     <>
       <button onClick={handleBack}>Home</button>
-      <form id='pizza-form'>
+      <form id='pizza-form' onSubmit={handleSubmit}>
         <label>
           Name for Order:
           <input 
@@ -121,6 +131,7 @@ function OrderForm() {
         {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
         <button type='submit' id='order-button'>Add to Order</button>
       </form>
+      {inProgressOrder ? <Order order={inProgressOrder} /> : <p>No current order</p>}
     </>
   )
 }
