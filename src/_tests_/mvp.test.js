@@ -23,7 +23,7 @@ describe("Pizza test, sprint 3 challenge", () => {
   })
 
   it('From homepage "/" route, click #order-pizza, navigate to "/pizza" route', () => {
-    const history = createMemoryHistory()
+    const history = createMemoryHistory();
     render(
       <Router history={history}>
         <App />
@@ -32,9 +32,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     expect(history.location.pathname).toBe('/')
     const orderPizza = document.querySelector('#order-pizza')
     expect(orderPizza).toBeInTheDocument();
-    fireEvent.click(orderPizza)
-    // MY CODE TAKE OUT
-    console.log(history.location.pathname, history);
+    fireEvent.click(orderPizza);
     expect(history.location.pathname).toBe('/pizza')
   });
 
@@ -54,7 +52,7 @@ describe("Pizza test, sprint 3 challenge", () => {
     );
     expect(testLocation.pathname).toBe('/pizza')
     const pizzaForm = document.querySelector('#pizza-form')
-    expect(pizzaForm).toBeInTheDocument()
+    expect(pizzaForm).toBeInTheDocument();
   });
 
   it('Form has name text input with #name-input', () => {

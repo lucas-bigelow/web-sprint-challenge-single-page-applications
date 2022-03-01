@@ -20,7 +20,7 @@ const initialFormValues = {
 function OrderForm() {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errorMessage, setErrorMessage] = useState('');
-  const [inProgressOrder, setInProgressOrder] =useState(null);
+  const [inProgressOrder, setInProgressOrder] = useState(null);
 
   const history = useHistory();
 
@@ -54,7 +54,7 @@ function OrderForm() {
     evt.preventDefault();
     axios.post('https://reqres.in/api/orders', formValues)
       .then(resp => resp.data)
-      .then(resp => setInProgressOrder(resp))
+      // .then(resp => setInProgressOrder(resp))
       .catch(err => console.error(err));
   }
 
